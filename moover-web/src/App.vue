@@ -1,21 +1,23 @@
-<template lang= 'pug'>
-  #app
-    img(src='./assets/logo.png')
-    h1 {{ msg }}
-    
+<template>
+  <div id="app">
+    <PmResponsiveNav />
+    <router-view/>
+  </div>
 </template>
 
+
 <script>
+import PmResponsiveNav from '@/component/layout/NavBarComponent.vue'
+
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome Moover app'
-    }
-  }
+  components: { PmResponsiveNav }
+  
 }
 </script>
 
-<style lang="scss">
-@import './scss/main.scss'
+<style scoped lang="scss">
+#app{
+  margin: -8px;
+}
 </style>
+
