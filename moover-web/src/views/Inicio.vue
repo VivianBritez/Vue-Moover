@@ -1,6 +1,6 @@
 <template>
  <div id="home">
-  <h1> La manera más segura y ágil de envio </h1> 
+  <h1> La manera más segura y ágil de envio </h1>
   <p>Somos una Startup que se encarga del envio de paquetes de manera segura y sanitizada.</p>
   <img class="img animate__animated animate__backInLeft" alt='logistic-img' src='../assets/moover.jpg' >
   <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto.</p>
@@ -11,14 +11,14 @@
   <p>Revista la ruta de tu paquete</p>
   <img class= "img" alt="give-on-time" src='../assets/img3.jpg'>
   <p>Ahorra dinero</p>
-  <pm-footer /> 
+  <pm-footer />
   </div>
-  
+
 </template>
 
 <script>
 import PmFooter from '@/component/layout/Footer.vue'
-export default{
+export default {
   components: { PmFooter }
 }
 

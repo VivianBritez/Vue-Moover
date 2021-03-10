@@ -1,25 +1,25 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import { auth } from "../firebase.js";
-import messages from "./messages";
-import rooms from "./rooms";
-import user from "./user";
-import utils from "./utils";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import { auth } from '../firebase.js'
+import messages from './messages'
+import rooms from './rooms'
+import user from './user'
+import utils from './utils'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {},
   mutations: {},
   actions: {
-    checkAuth({ commit }) {
-      auth.onAuthStateChanged(function(user) {
+    checkAuth ({ commit }) {
+      auth.onAuthStateChanged(function (user) {
         if (user) {
-          commit("user/setUser", user);
+          commit('user/setUser', user)
         } else {
-          commit("user/setUser", null);
+          commit('user/setUser', null)
         }
-      });
+      })
     }
   },
   modules: {
@@ -28,9 +28,9 @@ const store = new Vuex.Store({
     user,
     utils
   }
-});
+})
 
-export default store;
+export default store
 
 // Initial load
-store.dispatch("checkAuth");
+store.dispatch('checkAuth')

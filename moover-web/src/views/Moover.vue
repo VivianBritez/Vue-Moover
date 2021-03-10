@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="field is-grouped">
-       
+
       <div class="control">
         <button class="button is-link is-light">Enviar</button>
       </div>
@@ -68,7 +68,7 @@
         <button class="button is-link is-light">Cancel</button>
       </div>
     </div>
-     
+
   </div>
 
 </template>
@@ -109,5 +109,5 @@ button {
   height: 96px !important;
   font-size: 36px !important;
 }
-  
+
 </style>

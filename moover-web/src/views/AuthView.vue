@@ -5,8 +5,12 @@
         <div class="column">
           <!-- Login form -->
           <template v-if="isLogin">
-            <h1 class="title has-text-centered animate__animated animate__bounce">Iniciar sesión</h1>
-            <form @submit.prevent="doLogin"> 
+            <h1
+              class="title has-text-centered animate__animated animate__bounce"
+            >
+              Iniciar sesión
+            </h1>
+            <form @submit.prevent="doLogin">
               <div class="field">
                 <p>Email</p>
                 <div class="control">
@@ -106,7 +110,6 @@
               <a href="#" @click="isLogin = true">Iniciar sesion</a>
             </form>
           </template>
-          
         </div>
       </div>
     </div>
@@ -115,89 +118,89 @@
 
 <script>
 export default {
-  name: "AuthView",
-  data() {
+  name: 'AuthView',
+  data () {
     return {
       isLogin: true,
       isLoading: false,
       userData: {
-        name: "",
-        email: "",
-        password: ""
+        name: '',
+        email: '',
+        password: ''
       }
-    };
+    }
   },
   methods: {
-       redirect() {
-      this.$router.push({ name: "Home" });
+    redirect () {
+      this.$router.push({ name: 'Home' })
     },
-    resetData() {
-      this.userData.name = this.userData.email = this.userData.password = "";
+    resetData () {
+      this.userData.name = this.userData.email = this.userData.password = ''
     },
-    async doLogin() {
-      this.isLoading = true;
+    async doLogin () {
+      this.isLoading = true
       try {
-        await this.$store.dispatch("user/doLogin", {
+        await this.$store.dispatch('user/doLogin', {
           email: this.userData.email,
           password: this.userData.password
-        });
-        console.log("Logged in");
-          this.$toast.success("Logged in");
-        this.resetData();
-        this.redirect();
+        })
+        console.log('Logged in')
+        this.$toast.success('Logged in')
+        this.resetData()
+        this.redirect()
       } catch (error) {
-        console.error(error.message);
-         this.$toast.error(error.message);
+        console.error(error.message)
+        this.$toast.error(error.message)
       } finally {
-        this.isLoading = false;
+        this.isLoading = false
       }
     },
-    async doRegister() {
-      this.isLoading = true;
+    async doRegister () {
+      this.isLoading = true
       try {
-        await this.$store.dispatch("user/doRegister", {
+        await this.$store.dispatch('user/doRegister', {
           name: this.userData.name,
           email: this.userData.email,
           password: this.userData.password
-        });
-        console.log("Account created");
-        this.$toast.success("Account created")
-        this.resetData();
-        this.redirect();
+        })
+        console.log('Account created')
+        this.$toast.success('Account created')
+        this.resetData()
+        this.redirect()
       } catch (error) {
-        console.error(error.message);
-         this.$toast.error(error.message);
+        console.error(error.message)
+        this.$toast.error(error.message)
       } finally {
-        this.isLoading = false;
+        this.isLoading = false
       }
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">
 @import "~bulma/bulma.sass";
-p{
+p {
   font-size: 50px;
   font-family: arial;
 }
-h1{
-    font-family: arial;
-    font-size: 65px !important;
-    margin-top: 109px;
+h1 {
+  font-family: arial;
+  font-size: 65px !important;
+  margin-top: 109px;
 }
-input.input{
+input.input {
   margin-top: 32px;
-    font-size: 32px;
+  font-size: 32px;
 }
-a{
+a {
   font-size: 40px;
   font-family: cursive;
 }
-button{
-    height: 60px !important;
-    font-weight: 52px !important;
-    width: 258px !important;
-    font-size: 32px !important;
+button {
+  height: 60px !important;
+  font-weight: 52px !important;
+  width: 258px !important;
+  font-size: 32px !important;
 }
 </style>

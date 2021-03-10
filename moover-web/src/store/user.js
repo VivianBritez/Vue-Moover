@@ -1,53 +1,53 @@
-import { auth } from "../firebase.js";
+import { auth } from '../firebase.js'
 const state = {
   user: null
-};
+}
 
-const getters = {};
+const getters = {}
 
 const mutations = {
-  setUser(state, user) {
-    state.user = user;
+  setUser (state, user) {
+    state.user = user
   }
-};
+}
 
 const actions = {
-    getCurrentUser() {
-        return new Promise((resolve, reject) => {
-          const unsubscribe = auth.onAuthStateChanged(
-            user => {
-              unsubscribe();
-              resolve(user);
-            },
-            () => {
-              reject();
-            }
-          );
-        });
-    },
-  async doLogin({ commit }, { email, password }) {
-    await auth.signInWithEmailAndPassword(email, password);
-    commit("setUser", auth.currentUser);
+  getCurrentUser () {
+    return new Promise((resolve, reject) => {
+      const unsubscribe = auth.onAuthStateChanged(
+        user => {
+          unsubscribe()
+          resolve(user)
+        },
+        () => {
+          // eslint-disable-next-line prefer-promise-reject-errors
+          reject()
+        }
+      )
+    })
   },
-  async doRegister({ commit }, { name, email, password }) {
-    await auth.createUserWithEmailAndPassword(email, password);
-    const user = auth.currentUser;
+  async doLogin ({ commit }, { email, password }) {
+    await auth.signInWithEmailAndPassword(email, password)
+    commit('setUser', auth.currentUser)
+  },
+  async doRegister ({ commit }, { name, email, password }) {
+    await auth.createUserWithEmailAndPassword(email, password)
+    const user = auth.currentUser
     await user.updateProfile({
       displayName: name
-    });
-    commit("setUser", user);
+    })
+    commit('setUser', user)
   },
-  async doLogout({ commit }) {
-    await auth.signOut();
-    commit("setUser", null);
+  async doLogout ({ commit }) {
+    await auth.signOut()
+    commit('setUser', null)
   }
-};
+}
 
 export default {
-    namespaced: true,
-    state,
-    getters,
-    actions,
-    mutations
-};
-  
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
+}

@@ -2,10 +2,8 @@
   <div class="container">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-       <h1 class="animate__animated animate__shakeY">Moover</h1> 
-        <router-link :to="{ name: 'home' }" class="navbar-item">
-          
-        </router-link>
+        <h1 class="animate__animated animate__shakeY">Moover</h1>
+        <router-link :to="{ name: 'home' }" class="navbar-item"> </router-link>
         <a
           @click.prevent="toggleNavBar"
           role="button"
@@ -27,10 +25,10 @@
             Inicio
           </router-link>
           <router-link class="navbar-item" :to="{ name: 'Contact' }">
-           Contacto
+            Contacto
           </router-link>
           <router-link class="navbar-item" :to="{ name: 'Paquete' }">
-             Mi Paquete
+            Mi Paquete
           </router-link>
           <router-link class="navbar-item" :to="{ name: 'Moover' }">
             Pedir Moover
@@ -54,39 +52,39 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 export default {
-  name: "NavBarComponent",
-  mounted() {
-    this.burger = this.$refs.burger;
-    this.navBar = this.$refs.navBar;
+  name: 'NavBarComponent',
+  mounted () {
+    this.burger = this.$refs.burger
+    this.navBar = this.$refs.navBar
   },
-  data() {
+  data () {
     return {
       burger: null,
       navBar: null
-    };
+    }
   },
   methods: {
-    toggleNavBar() {
-      this.burger.classList.toggle("is-active");
-      this.navBar.classList.toggle("is-active");
+    toggleNavBar () {
+      this.burger.classList.toggle('is-active')
+      this.navBar.classList.toggle('is-active')
     },
-    async doLogout() {
+    async doLogout () {
       try {
-        await this.$store.dispatch("user/doLogout");
-        this.$router.push({ name: "auth" });
-        this.$toast.success("Logged out");
+        await this.$store.dispatch('user/doLogout')
+        this.$router.push({ name: 'auth' })
+        this.$toast.success('Logged out')
       } catch (error) {
-        this.$toast.error(error.message);
-        console.error(error.message);
+        this.$toast.error(error.message)
+        console.error(error.message)
       }
     }
   },
   computed: {
-    ...mapState("user", ["user"])
+    ...mapState('user', ['user'])
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -98,27 +96,26 @@ export default {
   width: 200px;
   height: auto;
 }
-.navbar{
-  background: #6E5BE3;
-
+.navbar {
+  background: #6e5be3;
 }
-a{
-    font-size: 42px !important;
-    font-family: arial;
-    margin-left: 19px;
+a {
+  font-size: 42px !important;
+  font-family: arial;
+  margin-left: 19px;
 }
-h1{
-    color:white;
-    font-size: 123px;
-    margin-left: 50px;
-    margin-top: 11px;
-    font-family: arial;
+h1 {
+  color: white;
+  font-size: 123px;
+  margin-left: 50px;
+  margin-top: 11px;
+  font-family: arial;
 }
-.navbar-burger{
+.navbar-burger {
   color: white !important;
   height: 10.25rem !important;
 }
-.nav-burger span{
+.nav-burger span {
   height: 4px !important;
   width: 24px !important;
 }
